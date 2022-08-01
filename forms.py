@@ -1,18 +1,15 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, PasswordField
 from wtforms.validators import DataRequired, EqualTo, ValidationError
+
 from flask_login import current_user
 import main
-
-
-class AddForm(FlaskForm):
-    my_column = StringField('My Column', [DataRequired()])
-    submit = SubmitField('Submit')
 
 
 class SignUpForm(FlaskForm):
     email_address = StringField('Email Address', [DataRequired()])
     first_name = StringField('First Name', [DataRequired()])
+    last_name = StringField('Last Name')
     password1 = PasswordField('Password', [DataRequired()])
     password2 = PasswordField('Password confirm', [DataRequired(), EqualTo('password1', 'Passwords must match')])
     submit = SubmitField('Sign Up')

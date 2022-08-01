@@ -1,32 +1,25 @@
 {% extends 'base.html' %}
 {% block content %}
-<h3>Available Books</h3>
+<h3>My Books</h3>
 <table class="table">
     <thead>
     <tr>
         <th scope="col">Author</th>
         <th scope="col">Title</th>
         <th scope="col">Genre</th>
-        <th scope="col">Quantity</th>
-        <th scope="col">Borrow book</th>
+        <th scope="col">Return book</th>
     </tr>
     </thead>
     {% for row in data %}
+    {% if current_user in row.users%}
     <tbody>
     <tr class="table-success">
         <th scope="row">{{ row.authors }}</th>
         <td>{{ row.title }}</td>
         <td>{{ row.genre }}</td>
-        <td>{{ row.quantity }}</td>
-
-        {% if row.quantity > 0  and current_user not in row.users %}
-        <td><a style="text-decoration:none; color:black; font-size:1rem " href="/borrow_book/{{row.id}}">Borrow</a></td>
-        {% else %}
-        <td>Not available to borrow</td>
-        {% endif %}
-
-
+        <td><a style="text-decoration:none; color:black; font-size:1rem " href="/return_book/{{row.id}}">Return</a></td>
     </tr>
+    {% endif %}
     {% endfor %}
     </tbody>
 </table>
