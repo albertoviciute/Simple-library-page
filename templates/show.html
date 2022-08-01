@@ -20,7 +20,7 @@
         <td>{{ row.quantity }}</td>
 
         {% if row.quantity > 0  and current_user not in row.users %}
-        <td><a style="text-decoration:none; color:black; font-size:1rem " href="/borrow_book/{{row.id}}">Borrow</a></td>
+        <td><a style="text-decoration:none; color:black;" href="/borrow_book/{{row.id}}">Borrow</a></td>
         {% else %}
         <td>Not available to borrow</td>
         {% endif %}
